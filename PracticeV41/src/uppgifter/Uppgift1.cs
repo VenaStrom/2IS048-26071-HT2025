@@ -18,8 +18,15 @@ internal class Uppgift1
     int produkt = input1 * input2;
     WriteLine("Produkt: {0}", produkt);
 
-    double kvot = input1 / input2;
-    WriteLine("Kvot: {0}", kvot);
+    if (Math.Abs(input2) != 0)
+    {
+      double kvot = input1 / input2;
+      WriteLine("Kvot: {0}", kvot);
+    }
+    else
+    {
+      WriteLine("Kvot: icke-definierad");
+    }
   }
 
   // vvv Above and beyond vvv
@@ -35,7 +42,7 @@ internal class Uppgift1
     // Give user 3 attempt to input numbers
     for (int i = 0; i < 3; i++)
     {
-      Write("Provide two numbers (default: {0}):", defaultInput);
+      Write($"Provide two numbers (default: {defaultInput}): ");
 
       string response = ReadLine() ?? defaultInput;
       if (response == "") response = defaultInput;
