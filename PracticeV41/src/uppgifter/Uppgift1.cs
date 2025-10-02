@@ -21,26 +21,26 @@ internal class Uppgift1
       string response = ReadLine() ?? defaultInput;
       if (response == "") response = defaultInput;
 
-      GeneratedRegexAttribute nonDigitRegex = new(@"[^\d\.\,\s]", RegexOptions.IgnorePatternWhitespace);
 
-      // Type check
-      if (nonDigitRegex.Match(response))
+      // Regex based input validation
+      Regex numberPairRegex = new(@"^\d*(?:[.,]\d*)? \d*(?:[.,]\d*)?$");
+      if (numberPairRegex.Match(response.Trim()).Length == 0)
       {
-        WriteLine("Only provide numbers please");
+        WriteLine("Only provide numbers please (nn or n.n or n,n). ");
 
         if (i == 2) WriteLine("Continuing with default value");
-        else WriteLine("Try again...");
+        else Write("Try again...");
         continue;
       }
 
-      double[] numbersProvided = [.. response.Split(" ").Select(Convert.ToDouble)];
+      double[] numbersProvided = [.. response.Trim().Split(" ").Select(Convert.ToDouble)];
 
       if (numbersProvided.Length != 2)
       {
-        WriteLine("You provided {0} numbers, not 2", numbersProvided.Length);
+        WriteLine("You provided {0} numbers, not 2. ", numbersProvided.Length);
 
         if (i == 2) WriteLine("Continuing with default value");
-        else WriteLine("Try again...");
+        else Write("Try again...");
         continue;
       }
       else
@@ -51,7 +51,7 @@ internal class Uppgift1
       }
     }
 
-    WriteLine("You chose: {0}", string.Join(" and ", [number1, number2])); // Casts doubles to strings implicitly
+    WriteLine("\nYou chose: {0}", string.Join(" and ", [number1, number2])); // Casts doubles to strings implicitly
     WriteLine("Calculating...");
 
     double sum = number1 + number2;
