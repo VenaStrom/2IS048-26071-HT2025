@@ -7,7 +7,7 @@ internal class Program
     if (args.Length > 0)
     {
       WriteLine("Why did you provide args? Your args:");
-      WriteLine("  " + String.Join(", ", args));
+      WriteLine("  " + string.Join(", ", args));
     }
 
     WriteLine("2IS048 26071 HT2025");
