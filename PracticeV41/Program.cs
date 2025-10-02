@@ -14,8 +14,9 @@ internal class Program
 
     WriteLine("=== 2IS048 26071 HT2025 ===\n");
 
-    // Uppgift1.RunMVP();
-    Uppgift1.Run();
+    // Uppgift1.Run();
+    // Uppgift1.RunAlaVena();
+    Uppgift2.Run();
 
     // Wait 200 ms and close due to JSON-RPC disconnect issues
     Thread.Sleep(200);

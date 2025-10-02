@@ -1,12 +1,31 @@
 using System.Text.RegularExpressions;
-using System.Xml.Serialization;
 using static System.Console;
 
 internal class Uppgift1
 {
+  public static void Run()
+  {
+    int input1 = 10;
+    int input2 = 20;
+    WriteLine("input1 = {0}\ninput2 = {1}\n", input1, input2);
+
+    int summa = input1 + input2;
+    WriteLine("Summa: {0}", summa);
+
+    int differens = input1 - input2;
+    WriteLine("Differens: {0}", differens);
+
+    int produkt = input1 * input2;
+    WriteLine("Produkt: {0}", produkt);
+
+    double kvot = input1 / input2;
+    WriteLine("Kvot: {0}", kvot);
+  }
+
+  // vvv Above and beyond vvv
   readonly static string defaultInput = "10 20";
 
-  public static void Run()
+  public static void RunAlaVena()
   {
     WriteLine("=== Uppgift 1 ===");
 
@@ -65,24 +84,5 @@ internal class Uppgift1
 
     double quotient = number1 / number2;
     WriteLine($"Quotient: {quotient}");
-  }
-
-  public static void RunMVP()
-  {
-    int input1 = 10;
-    int input2 = 20;
-    WriteLine("input1 = {0}\ninput2 = {1}\n", input1, input2);
-
-    int summa = input1 + input2;
-    WriteLine("Summa: {0}", summa);
-
-    int differens = input1 - input2;
-    WriteLine("Differens: {0}", differens);
-
-    int produkt = input1 * input2;
-    WriteLine("Produkt: {0}", produkt);
-
-    double kvot = input1 / input2;
-    WriteLine("Kvot: {0}", kvot);
   }
 }
