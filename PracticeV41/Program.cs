@@ -18,7 +18,8 @@ internal class Program
     // Uppgift1.RunAlaVena();
     // Uppgift2.Run();
     // Uppgift3.Run();
-    Uppgift4.Run();
+    // Uppgift4.Run();
+    Uppgift5.Run();
 
     // Wait 200 ms and close due to JSON-RPC disconnect issues
     Thread.Sleep(200);
