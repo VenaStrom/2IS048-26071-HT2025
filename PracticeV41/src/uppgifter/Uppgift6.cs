@@ -4,6 +4,6 @@ internal class Uppgift6
 {
   public static void Run()
   {
-    WriteLine("=== Uppgift6 ===");
+    WriteLine("=== Uppgift 6 ===");
   }
 }

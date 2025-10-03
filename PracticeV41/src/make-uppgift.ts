@@ -10,7 +10,7 @@ const nextUppgiftNumber = Math.max(...uppgiftNumbers) + 1;
 const newUppgiftPath = `PracticeV41/src/uppgifter/Uppgift${nextUppgiftNumber}.cs`;
 
 const templateContent = fs.readFileSync(templatePath, "utf-8");
-const newUppgiftContent = templateContent.replace(/Uppgift.?X/g, `Uppgift${nextUppgiftNumber}`);
+const newUppgiftContent = templateContent.replace(/(Uppgift.?)X/g, `$1${nextUppgiftNumber}`);
 
 fs.writeFileSync(newUppgiftPath, newUppgiftContent);
 console.log(`\nCreated ${newUppgiftPath}\n`);
