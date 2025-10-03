@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using static System.Console;
 
 internal class Uppgift2
@@ -9,16 +8,12 @@ internal class Uppgift2
   {
     WriteLine("=== Uppgift 2 ===");
 
-    Write("Ange ett antal dagar: ");
+    Write("Name a number of day (default: {0}): ", defaultInput);
     string response = (ReadLine() ?? defaultInput.ToString()).Trim();
 
-    if (response == "")
-    {
-      WriteLine("Ogiltig inmatning. Avbryter...");
-      return;
-    }
+    if (response == "") response = defaultInput.ToString();
 
-    WriteLine("Du valde {0} dagar (standard: {1}).", response, defaultInput);
+    WriteLine("You chose {0} days.", response);
 
     double days = Convert.ToDouble(response);
 
