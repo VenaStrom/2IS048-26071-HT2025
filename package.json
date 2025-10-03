@@ -4,7 +4,11 @@
   "repository": "https://github.com/VenaStrom/2IS048-26071-HT2025.git",
   "author": "Vena <strom.vena+gh@gmail.com>",
   "scripts": {
-    "dev": "dotnet run --project ./PracticeV41"
+    "dev": "dotnet run --project ./PracticeV41",
+    "start": "node PracticeV41/src/make-uppgift.ts"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.6.2"
+  }
 }
