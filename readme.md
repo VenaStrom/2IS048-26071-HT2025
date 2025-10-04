@@ -5,6 +5,6 @@
 ```bash
 dotnet run --project ./[Project name] -- [string[] args]
 # Examples
-dotnet run --project ./PracticeDel1 
-dotnet run --project ./PracticeDel1 -- Hello!
+dotnet run --project ./Practice1 
+dotnet run --project ./Practice1 -- Hello!
 ```

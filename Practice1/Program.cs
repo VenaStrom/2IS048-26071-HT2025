@@ -10,7 +10,7 @@ internal class Program
       WriteLine("  " + string.Join(", ", args));
     }
 
-    WriteLine("=== 2IS048 26071 HT2025 ===\n");
+    WriteLine("=== 2IS048 26071 HT2025 - Practice1 ===\n");
 
     // Uppgift1.Run();
     // Uppgift1.RunAlaVena();
