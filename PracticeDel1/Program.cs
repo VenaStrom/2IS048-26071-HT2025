@@ -1,7 +1,5 @@
 ﻿using static System.Console;
 
-namespace PracticeV41;
-
 internal class Program
 {
   private static void Main(string[] args)
