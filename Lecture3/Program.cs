@@ -6,8 +6,8 @@ internal class Program
   {
     WriteLine("=== 2IS048 26071 HT2025 - Lecture 3 (F3) ===\n");
 
-    Uppgift1.Run();
-    // Uppgift2.Run();
+    // Uppgift1.Run();
+    Uppgift2.Run();
     // Uppgift3.Run();
 
 
