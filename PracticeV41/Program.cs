@@ -23,7 +23,8 @@ internal class Program
     // Uppgift6.Run();
     // Uppgift7.Run();
     // Uppgift8.Run();
-    Uppgift9.Run();
+    // Uppgift9.Run();
+    Uppgift10.Run();
 
     // Wait 200 ms before closing due to JSON-RPC disconnect issues
     Thread.Sleep(200);
