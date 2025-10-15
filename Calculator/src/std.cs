@@ -12,6 +12,17 @@ static class StringExtension
 
     return null;
   }
+  public static int? FindLastCharIndex(this string haystack, char needle)
+  {
+    char[] letters = haystack.ToCharArray();
+
+    for (int i = letters.Length - 1; i > 0; i--)
+    {
+      if (letters[i] == needle) return i;
+    }
+
+    return null;
+  }
 
   public static string Slice(this string s, int? start = null, int? end = null)
   {

@@ -45,8 +45,7 @@ class Calculator
           if ((keyInfo.Modifiers & ConsoleModifiers.Control) != 0)
           {
             // Remove til next space what control is held
-            int? spaceIndex = line.FindCharIndex(' ');
-            WriteLine(spaceIndex);
+            int? spaceIndex = line.FindLastCharIndex(' ');
             if (spaceIndex == null) line = "";
             line = line.Slice(0, spaceIndex);
           }
