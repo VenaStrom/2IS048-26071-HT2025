@@ -24,6 +24,15 @@ static class StringExtension
     return null;
   }
 
+  /// <summary>
+  /// Return part of a string.
+  /// 
+  /// Start: inclusive. End: exclusive.
+  /// </summary>
+  /// <param name="s"></param>
+  /// <param name="start">Inclusive index</param>
+  /// <param name="end">Exclusive index</param>
+  /// <returns></returns>
   public static string Slice(this string s, int? start = null, int? end = null)
   {
     start ??= 0;
@@ -106,5 +115,31 @@ static class StringExtension
     }
 
     return new string(noWhitespaceLetters);
+  }
+
+  public static string[] CustomSplit(this string s, char separator)
+  {
+    if (s.Length == 0) return [];
+
+    int separatorCount = 0;
+    for (int i = 0; i < s.Length; i++) if (s[i] == separator) separatorCount++;
+
+    if (separatorCount == 0) return [s];
+
+    string[] substrings = new string[separatorCount + 1];
+    int substringsIndex = 0;
+
+    int lastSeparatorIndex = 0;
+    for (int i = 0; i < s.Length; i++)
+    {
+      if (i == separator)
+      {
+        substrings[substringsIndex] = s.Slice(lastSeparatorIndex, i);
+        substringsIndex++;
+        lastSeparatorIndex = i + 1;
+      }
+    }
+
+    return substrings;
   }
 }

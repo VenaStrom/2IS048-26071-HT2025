@@ -1,11 +1,17 @@
-﻿using System.ComponentModel;
-using static System.Console;
+﻿using static System.Console;
 using static StringExtension;
+
 
 class Calculator
 {
-  static void Main()
+  static void Main(string[] args)
   {
+    if (args.Length != 0)
+    {
+      StdUnitTest.Run();
+      Environment.Exit(0);
+    }
+
     string line = "";
 
     ConsoleKey[] allowedKeys = [
@@ -81,11 +87,18 @@ class Calculator
 
   static double? ParseEq(string eq)
   {
-    string trimmedEq = eq.CustomTrim();
+    string trimmedEq = eq.RemoveWhitespace();
 
     if (trimmedEq == "") return null;
 
-    
+    // Split into parts via operator
+
+    string[] parts = trimmedEq.CustomSplit('/');
+
+    WriteLine("\n\n parts: " + parts.Length);
+    WriteLine($"[{string.Join(", ", parts)}]");
+
+    return null;
   }
 
   // static void Draw(string line, string pressed = "")
