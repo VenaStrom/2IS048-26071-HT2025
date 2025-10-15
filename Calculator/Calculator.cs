@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using System.ComponentModel;
+using static System.Console;
 using static StringExtension;
 
 class Calculator
@@ -32,6 +33,7 @@ class Calculator
       Clear();
       WriteLine("[CALCULATOR]\n");
       WriteLine(line + "_");
+      SetCursorPosition(line.Length, CursorTop - 1);
 
       ConsoleKeyInfo keyInfo = ReadKey();
 
@@ -41,7 +43,6 @@ class Calculator
       {
         case ConsoleKey.Backspace:
           if (line.Length == 0) break;
-          WriteLine(keyInfo.Modifiers & ConsoleModifiers.Control);
           if ((keyInfo.Modifiers & ConsoleModifiers.Control) != 0)
           {
             // Remove til next space what control is held
@@ -56,13 +57,32 @@ class Calculator
           }
           break;
 
+        case ConsoleKey.Enter:
+          double? result = ParseEq(line);
+          if (result != null)
+          {
+            line = result.Value.ToString();
+          }
+          else
+          {
+            WriteLine("Failed to evaluate");
+            Thread.Sleep(500);
+          }
+          break;
+
         default:
           line += keyInfo.KeyChar;
           break;
       }
 
-      Thread.Sleep(100);
+      // Thread.Sleep(100);
     }
+  }
+
+  static double? ParseEq(string eq)
+  {
+    return null;
+    // if (eq.Trim)
   }
 
   // static void Draw(string line, string pressed = "")

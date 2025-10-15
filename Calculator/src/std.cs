@@ -41,4 +41,39 @@ static class StringExtension
 
     return new string(letters);
   }
+
+  public static string CustomTrim(this string s)
+  {
+    if (s.Length == 0) return "";
+
+    // Find how many spaces are at the front
+    int startPad = 0;
+    for (int i = 0; i < s.Length; i++)
+    {
+      if (s[i] == ' ')
+      {
+        startPad++;
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    // Find how many spaces are at the back
+    int endPad = 0;
+    for (int i = s.Length - 1; i > 0; i--)
+    {
+      if (s[i] == ' ')
+      {
+        endPad++;
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    return s.Slice(startPad, s.Length - endPad);
+  }
 }
