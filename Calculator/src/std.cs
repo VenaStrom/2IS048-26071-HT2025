@@ -76,4 +76,35 @@ static class StringExtension
 
     return s.Slice(startPad, s.Length - endPad);
   }
+
+  public static string RemoveWhitespace(this string s)
+  {
+    char?[] letters = [.. s.ToCharArray()];
+
+    int spaceCount = 0;
+    for (int i = 0; i < letters.Length; i++)
+    {
+      if (letters[i] == ' ')
+      {
+        letters[i] = null;
+        spaceCount++;
+      }
+    }
+
+    if (spaceCount == 0) return s;
+
+    char[] noWhitespaceLetters = new char[letters.Length - spaceCount];
+    int newArrayIndex = 0;
+    for (int i = 0; i < letters.Length; i++)
+    {
+      char? letter = letters[i];
+      if (letter == null) continue;
+
+      noWhitespaceLetters[newArrayIndex] = letter.Value;
+
+      newArrayIndex++;
+    }
+
+    return new string(noWhitespaceLetters);
+  }
 }

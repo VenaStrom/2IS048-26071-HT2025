@@ -81,8 +81,11 @@ class Calculator
 
   static double? ParseEq(string eq)
   {
-    return null;
-    // if (eq.Trim)
+    string trimmedEq = eq.CustomTrim();
+
+    if (trimmedEq == "") return null;
+
+    
   }
 
   // static void Draw(string line, string pressed = "")
