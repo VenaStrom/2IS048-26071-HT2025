@@ -4,12 +4,13 @@ using static StringExtension;
 
 class Calculator
 {
-  static void Main(string[] args)
+  static void Main()
   {
-    if (args.Length != 0)
+    bool passed = StdUnitTest.Run();
+    if (!passed)
     {
-      StdUnitTest.Run();
-      Environment.Exit(0);
+      WriteLine("Some tests failed!");
+      Environment.Exit(1);
     }
 
     string line = "";
