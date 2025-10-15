@@ -12,6 +12,7 @@ class Calculator
       WriteLine("Some tests failed!");
       Environment.Exit(1);
     }
+    Thread.Sleep(400);
 
     string line = "";
 

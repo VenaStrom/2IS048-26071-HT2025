@@ -38,6 +38,11 @@ static class StringExtension
     start ??= 0;
     end ??= s.Length;
 
+    if (start < 0 || end > s.Length)
+    {
+      throw new IndexOutOfRangeException();
+    }
+
     int length = Math.Abs(end.Value - start.Value);
     char[] letters = new char[length];
     int letterIndexPointer = 0;

@@ -8,8 +8,10 @@ static class StdUnitTest
     bool[] tests = [
       Test_FindCharIndex(),
       Test_FindLastCharIndex(),
-      Test_Slice(),
+      Test_CustomSplit(),
       Test_CustomTrim(),
+      Test_RemoveWhitespace(),
+      Test_Slice(),
     ];
 
     return tests.Any(e => e == true);
@@ -70,23 +72,41 @@ static class StdUnitTest
   static bool Test_Slice()
   {
     string name = "string.Slice()";
+    string hay = "I always dreamed about being stranded on a desert island until it actually happened.";
 
-    string sentence = "I always dreamed about being stranded on a desert island until it actually happened.";
-    char separator = ' ';
+    int startIndex = 29;
+    int endIndex = 37;
+    int expectedLength = 8;
 
-    int expectedWordCount = 14;
+    string word = hay.Slice(startIndex, endIndex);
 
-    string[] words = sentence.CustomSplit(separator);
-
-    if (words.Length == 0)
+    if (word.Length == 0)
     {
-      WriteLine($"❌ {name} failed, received array of 0 length.");
+      WriteLine($"❌ {name} failed, received output of 0 length.");
       return false;
     }
 
-    if (words.Length != expectedWordCount)
+    if (word.Length != expectedLength)
     {
-      WriteLine($"❌ {name} failed, expected {expectedWordCount}, got {words.Length}.");
+      WriteLine($"❌ {name} failed, expected {expectedLength}, got {word.Length} length.");
+      return false;
+    }
+
+    // Try out of range
+    bool threw = false;
+    int outOfBoundsEnd = hay.Length * 2;
+    try
+    {
+      word = hay.Slice(startIndex, outOfBoundsEnd);
+    }
+    catch (IndexOutOfRangeException)
+    {
+      threw = true;
+    }
+
+    if (!threw)
+    {
+      WriteLine($"❌ {name} failed, expected IndexOutOfRangeException.");
       return false;
     }
 
@@ -118,4 +138,57 @@ static class StdUnitTest
     WriteLine($"✅ {name}");
     return true;
   }
+
+  static bool Test_RemoveWhitespace()
+  {
+    string name = "string.CustomTrim()";
+
+    string input = " I  am  a  bad  person  who  uses  double  spaces,  therefor  i  should  be  punished.  ";
+    int expectedLength = 59;
+
+    string collapsed = input.RemoveWhitespace();
+
+    if (collapsed.Length == 0)
+    {
+      WriteLine($"❌ {name} failed, received output of 0 length.");
+      return false;
+    }
+
+    if (collapsed.Length != expectedLength)
+    {
+      WriteLine($"❌ {name} failed, expected {expectedLength}, got {collapsed.Length} length.");
+      return false;
+    }
+
+    WriteLine($"✅ {name}");
+    return true;
+  }
+
+  static bool Test_CustomSplit()
+  {
+    string name = "string.Split()";
+
+    string sentence = "I always dreamed about being stranded on a desert island until it actually happened.";
+    char separator = ' ';
+
+    int expectedWordCount = 14;
+
+    string[] words = sentence.CustomSplit(separator);
+
+    if (words.Length == 0)
+    {
+      WriteLine($"❌ {name} failed, received array of 0 length.");
+      return false;
+    }
+
+    if (words.Length != expectedWordCount)
+    {
+      WriteLine($"❌ {name} failed, expected {expectedWordCount}, got {words.Length}.");
+      return false;
+    }
+
+    WriteLine($"✅ {name}");
+    return true;
+  }
+
 }
